@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:peminjaman_perpustakan_kelas_c/app/data/MODEL/response_pinjam.dart';
 import 'package:peminjaman_perpustakan_kelas_c/app/modules/register/controllers/register_controller.dart';
 import 'package:peminjaman_perpustakan_kelas_c/app/modules/register/bindings/register_binding.dart';
+import '../controllers/register_controller.dart';
 
 class RegisterView extends GetView<RegisterController> {
   const RegisterView({Key? key}) : super(key: key);
