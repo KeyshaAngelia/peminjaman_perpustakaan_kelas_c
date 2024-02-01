@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
-import 'package:peminjaman_perpustakan_kelas_c/app/data/MODEL/response_pinjam.dart';
-import 'package:peminjaman_perpustakan_kelas_c/app/modules/register/controllers/register_controller.dart';
-import 'package:peminjaman_perpustakan_kelas_c/app/modules/register/bindings/register_binding.dart';
+
 import '../controllers/register_controller.dart';
 
 class RegisterView extends GetView<RegisterController> {
@@ -14,17 +13,71 @@ class RegisterView extends GetView<RegisterController> {
           title: const Text('RegisterView'),
           centerTitle: true,
         ),
-        body: controller.obx((state) => ListView.separated(
-          itemCount:  state!.length,
-          itemBuilder: (context, index){
-            DataPinjam dataPinjam= state [index];
-            return ListTile(
-              title: Text("Buku ${dataPinjam.book?.judul}"),
-              subtitle: Text("Tanggal Pinjam: ${dataPinjam.tanggalPinjam}\ntanggal kembali: ${dataPinjam.tanggalKembali}") ,
-            );
-          },
-          separatorBuilder: (context, index)=> Divider(),
-        ))
+        body: Center(
+            child:  Form(
+              key: controller.formKey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: controller.namaController,
+                    decoration: InputDecoration(hintText: "Masukkan Nama"),
+                    validator: (value){
+                      if (value!.isEmpty) {
+                        return "Nama tidak boleh kosong";
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: controller.usernameController,
+                    decoration: InputDecoration(hintText: "Masukkan Username"),
+                    validator: (value){
+                      if (value!.isEmpty) {
+                        return "Username tidak boleh kosong";
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: controller.telpController,
+                    decoration: InputDecoration(hintText: "Masukkan No. Telp"),
+                    validator: (value){
+                      if (value!.isEmpty) {
+                        return "No. Telp tidak boleh kosong";
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: controller.alamatController,
+                    decoration: InputDecoration(hintText: "Masukkan Alamat"),
+                    validator: (value){
+                      if (value!.isEmpty) {
+                        return "Alamat tidak boleh kosong";
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: controller.passwordController,
+                    decoration: InputDecoration(hintText: "Masukkan Password"),
+                    validator: (value){
+                      if (value!.isEmpty) {
+                        return "Password tidak boleh kosong";
+                      }
+                      return null;
+                    },
+                  ),
+                  Obx(() => controller.loading.value?
+                  CircularProgressIndicator():
+                  ElevatedButton(onPressed: () {
+                    controller.post();
+                  }, child: Text("Register"))
+                  )
+                ],
+              ),
+            )
+        )
     );
   }
 }

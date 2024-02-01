@@ -1,9 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:peminjaman_perpustakan_kelas_c/app/data/model/response_book.dart';
-import 'package:peminjaman_perpustakan_kelas_c/app/routes/app_pages.dart';
-
+import '../../../data/model/response_book.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/book_controller.dart';
 
 class BookView extends GetView<BookController> {
@@ -15,9 +14,6 @@ class BookView extends GetView<BookController> {
           title: const Text('BookView'),
           centerTitle: true,
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: ()=>Get.toNamed(Routes.ADD_BOOK),child: Icon(Icons.add),
-        ),
         body: controller.obx((state) => ListView.separated(
           itemCount: state!.length,
           itemBuilder: (context, index){
@@ -25,10 +21,15 @@ class BookView extends GetView<BookController> {
             return ListTile(
               title: Text("${dataBook.judul}"),
               subtitle: Text("Penulis ${dataBook.penulis}\n${dataBook.penerbit} - ${dataBook.tahunTerbit}"),
+              trailing: ElevatedButton(onPressed: ()=>Get.toNamed(Routes.ADD_PEMINJAMAN, parameters: {
+                'id' : (dataBook.id ??0).toString(),'judul':dataBook.judul ??'-'
+              }),
+              child: Text("Pinjam"),),
+
             );
           },
           separatorBuilder: (context, index)=> Divider(),
-        ))
+        ),onLoading: CupertinoActivityIndicator())
     );
   }
 }

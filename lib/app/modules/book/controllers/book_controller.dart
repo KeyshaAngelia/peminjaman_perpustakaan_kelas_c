@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:peminjaman_perpustakan_kelas_c/app/data/model/response_book.dart';
 
 import '../../../data/constant/endpoint.dart';
+import '../../../data/model/response_book.dart';
 import '../../../data/provider/app_provider.dart';
 
 class BookController extends GetxController with StateMixin<List<DataBook>>{
