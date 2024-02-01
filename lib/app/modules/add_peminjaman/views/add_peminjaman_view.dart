@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:get/get.dart';
 
 import '../controllers/add_peminjaman_controller.dart';
@@ -10,42 +10,46 @@ class AddPeminjamanView extends GetView<AddPeminjamanController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${Get.parameters['judul'].toString()}'),
+        title: Text('${Get.parameters['judul']}'),
         centerTitle: true,
       ),
-      body:
-      Form(
+      body: Form(
           key: controller.formKey,
           child: Column(
             children: [
               Text('Buku yang dipinjam : ${Get.parameters['judul']}'),
               // DateTimePicker
-              TextFormField(
+              DateTimePicker(
+                icon: Icon(Icons.date_range_outlined),
                 controller: controller.tanggal_pinjamController,
-                decoration: InputDecoration(
-                  hintText: "Masukan Tanggal Pinjam",
-                ),
-                validator: (value) {
-                  if (value!.length < 2) {
-                    return "Tanggal pinjam tidak boleh kosong";
-                  }
+                firstDate: DateTime(2000),
+                lastDate: DateTime(2100),
+                dateLabelText: 'Pilih tanggal pinjam',
+                dateMask: 'yyyy-MM-dd',
+                onChanged: (val) => print(val),
+                validator: (val) {
+                  print(val);
                   return null;
                 },
+                onSaved: (val) => print(val),
               ),
-              TextFormField(
-                // obscureText: true,
+
+              DateTimePicker(
+                icon: Icon(Icons.date_range_outlined),
                 controller: controller.tanggal_kembaliController,
-                decoration: InputDecoration(
-                  hintText: "Masukan Tanggal Kembali",
-                ),
-                validator: (value) {
-                  if (value!.length < 2) {
-                    return " Tanggal kembali tidak boleh kosong";
-                  }
+                firstDate: DateTime(2000),
+                lastDate: DateTime(2100),
+                dateLabelText: 'Pilih tanggal kembali',
+                dateMask: 'yyyy-MM-dd',
+                onChanged: (val) => print(val),
+                validator: (val) {
+                  print(val);
                   return null;
                 },
+                onSaved: (val) => print(val),
               ),
-              Obx(() => controller.loading.value
+              SizedBox(height: 20,),
+              Obx(()  => controller.loading.value
                   ? CircularProgressIndicator()
                   : ElevatedButton(
                   onPressed: () {
