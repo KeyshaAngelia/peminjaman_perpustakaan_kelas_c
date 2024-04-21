@@ -16,6 +16,7 @@ class RegisterView extends GetView<RegisterController> {
         // ),
         body: SingleChildScrollView(
           child: Container(
+            height: MediaQuery.of(context).size.height,
             color: Color(0xff1B255A),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
