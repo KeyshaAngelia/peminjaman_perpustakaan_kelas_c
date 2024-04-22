@@ -4,6 +4,8 @@ import '../modules/add_peminjaman/bindings/add_peminjaman_binding.dart';
 import '../modules/add_peminjaman/views/add_peminjaman_view.dart';
 import '../modules/book/bindings/book_binding.dart';
 import '../modules/book/views/book_view.dart';
+import '../modules/book_detail/bindings/book_detail_binding.dart';
+import '../modules/book_detail/views/book_detail_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -55,6 +57,11 @@ class AppPages {
       name: _Paths.ADD_BOOK,
       page: () => const AddPeminjamanView(),
       binding: AddPeminjamanBinding(),
+    ),
+    GetPage(
+      name: _Paths.BOOK_DETAIL,
+      page: () => const BookDetailView(),
+      binding: BookDetailBinding(),
     ),
   ];
 }

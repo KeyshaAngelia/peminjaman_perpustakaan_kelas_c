@@ -103,7 +103,7 @@ class HomeView extends GetView<HomeController> {
                                 return InkWell(
                                   onTap: () {
                                     Get.toNamed(
-                                      Routes.BOOK,
+                                      Routes.BOOK_DETAIL,
                                       parameters: {
                                         'id': state![index].id.toString(),
                                       },
@@ -121,7 +121,8 @@ class HomeView extends GetView<HomeController> {
                                               image:
                                               AssetImage('assets/img/cover-not-found.jpeg'),
                                               fit: BoxFit.cover,
-                                            ),),
+                                            ),
+                                          ),
                                         ),
                                         Container(
                                           width: 130,
