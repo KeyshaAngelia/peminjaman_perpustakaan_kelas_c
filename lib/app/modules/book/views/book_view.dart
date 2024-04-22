@@ -24,8 +24,8 @@ class BookView extends GetView<BookController> {
               trailing: ElevatedButton(onPressed: ()=>Get.toNamed(Routes.ADD_PEMINJAMAN, parameters: {
                 'id' : (dataBook.id ??0).toString(),'judul':dataBook.judul ??'-'
               }),
-              child: Text("Pinjam"),),
-
+              child: Text("Pinjam"),
+              ),
             );
           },
           separatorBuilder: (context, index)=> Divider(),

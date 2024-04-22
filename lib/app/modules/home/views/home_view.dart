@@ -101,7 +101,14 @@ class HomeView extends GetView<HomeController> {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 return InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.toNamed(
+                                      Routes.BOOK,
+                                      parameters: {
+                                        'id': state![index].id.toString(),
+                                      },
+                                    );
+                                  },
                                   child: Container(
                                     margin: const EdgeInsets.only(right: 10),
                                     child: Column(
@@ -116,10 +123,13 @@ class HomeView extends GetView<HomeController> {
                                               fit: BoxFit.cover,
                                             ),),
                                         ),
-                                        Text(
-                                          state![index].judul ?? '',
-                                          style: TextStyle(
-                                              fontSize: 15, color: Colors.white),
+                                        Container(
+                                          width: 130,
+                                          child: Text(
+                                            state![index].judul ?? '',
+                                            style: TextStyle(
+                                                fontSize: 15, color: Colors.white),
+                                          ),
                                         )
                                       ],
                                     ),
