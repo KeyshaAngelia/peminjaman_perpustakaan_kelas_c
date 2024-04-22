@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:peminjam_perpustakaan_kelas_b/app/routes/app_pages.dart';
 import '../controllers/book_detail_controller.dart';
 
 class BookDetailView extends GetView<BookDetailController> {
@@ -14,7 +15,7 @@ class BookDetailView extends GetView<BookDetailController> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Get.back();
+            Get.offAllNamed(Routes.HOME);
           },
         ),
         actions: [
@@ -42,7 +43,7 @@ class BookDetailView extends GetView<BookDetailController> {
                         width: 150, // Lebar gambar yang ingin ditampilkan di tengah
                         fit: BoxFit.cover,
                       ),
-
+                      Text('Title')
                     ],
                   ),
                 ),
