@@ -1,6 +1,6 @@
 # peminjaman_perpustakan_kelas_c
 
-A new Flutter project.
+Aplikasi Perpustakaan untuk murid SMKN
 
 ## Getting Started
 
